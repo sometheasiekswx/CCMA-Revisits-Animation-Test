@@ -5,12 +5,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
   <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
+  <style>
+    .container {
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      grid-template-rows: 1fr; 
+      gap: 0px 0px; 
+      grid-template-areas: 
+        ". ."; 
+    }
+  </style>
   <title>Revisits Animation</title>
 </head>
 
 <body>
-<div id="container"></div>
-<script src="reglmapanimation.min.js"></script>
+  <div class="container">
+    <div id="container"></div>
+  </div>
+
+  <script src="reglmapanimation.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"
         integrity="sha256-m0QmIsBXcOMiETRmpT3qg2IQ/i0qazJA2miCHzOmS1Y=" crossorigin="anonymous"></script>
 <script>
@@ -23,7 +36,7 @@
     };
   }).then(pointData => {
     //make container fill screen
-    let width = Math.min(window.innerWidth, 500);
+    let width = Math.min(window.innerWidth, 600);
     let height = Math.min(window.innerHeight, 600);
     let container = document.getElementById("container");
     container.style.height = height + "px";
@@ -50,7 +63,6 @@
             .duration(1000)
             .delayAtEnd(2000)
             .pointWidth(5)
-            .xAxisTitle("Amount of pig revisits")
             .binLabels(true)
             .binYLabelFunction(function (bin) {
               let count = bin.binCount;
